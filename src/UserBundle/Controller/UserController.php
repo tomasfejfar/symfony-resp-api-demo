@@ -7,8 +7,28 @@ use UserBundle\Entity\User;
 
 class UserController extends FOSRestController
 {
-    public function getUserAction(User $user)
+    /**
+     * @var \UserBundle\Service\User
+     */
+    private $userService;
+
+    /**
+     * UserController constructor.
+     *
+     * @param \UserBundle\Service\User $userService
+     */
+    public function __construct(\UserBundle\Service\User $userService)
     {
-        return array('user' => $user);
+        $this->userService = $userService;
+    }
+
+    public function getUserAction($userId)
+    {
+        return $this->userService->get($userId);
+    }
+
+    public function getUsersAction()
+    {
+        return $this->userService->list();
     }
 }
