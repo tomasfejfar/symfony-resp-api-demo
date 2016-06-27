@@ -1,20 +1,20 @@
 parameters:
-  user.repository.class: UserBundle\Repository\UserRepository
+  user.repository.class: AppBundle\Repository\UserRepository
 services:
     user_repository:
-        class: UserBundle\Repository\UserRepository
+        class: AppBundle\Repository\UserRepository
         arguments:
             - '@doctrine.orm.entity_manager'
 
     user_service:
-        class: UserBundle\Service\User
+        class: AppBundle\Service\User
         arguments:
             - '@user_repository'
 
-    UserBundle\Controller\UserController:
-      class: UserBundle\Controller\UserController
+    AppBundle\Controller\UserController:
+      class: AppBundle\Controller\UserController
       arguments:
         - '@user_service'
 #    user.example:
-#        class: UserBundle\Example
+#        class: AppBundle\Example
 #        arguments: ["@service_id", "plain_value", %parameter%]

@@ -1,10 +1,10 @@
 <?php
 
-namespace UserBundle\Fixtures;
+namespace AppBundle\Fixtures;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use UserBundle\Entity\User;
+use AppBundle\Entity\User;
 
 class LoadData implements FixtureInterface
 {

@@ -1,5 +1,5 @@
 <?php
-namespace UserBundle\Request;
+namespace AppBundle\Request;
 
 use JMS\Serializer\Annotation as JMS;
 use Symfony\Component\Validator\Constraints as Assert;

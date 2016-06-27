@@ -1,6 +1,6 @@
 <?php
 
-namespace UserBundle\Tests\Controller;
+namespace AppBundle\Tests\Controller;
 
 use Liip\FunctionalTestBundle\Test\WebTestCase;
 
@@ -9,7 +9,7 @@ class UserControllerTest extends WebTestCase
     public function setUp()
     {
         $this->loadFixtures([
-            'UserBundle\Fixtures\LoadData',
+            'AppBundle\Fixtures\LoadData',
         ]);
     }
 

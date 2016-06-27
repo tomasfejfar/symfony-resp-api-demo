@@ -1,5 +1,5 @@
 <?php
-namespace UserBundle\Exception;
+namespace AppBundle\Exception;
 
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 

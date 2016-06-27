@@ -1,29 +1,29 @@
 <?php
 
-namespace UserBundle\Controller;
+namespace AppBundle\Controller;
 
 use FOS\RestBundle\Controller\FOSRestController;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
-use UserBundle\Entity\User;
+use AppBundle\Entity\User;
 use FOS\RestBundle\Controller\Annotations\Get;
 use FOS\RestBundle\Controller\Annotations\Post;
-use UserBundle\Exception\RequestValidationException;
-use UserBundle\Request\AddUserRequest;
+use AppBundle\Exception\RequestValidationException;
+use AppBundle\Request\AddUserRequest;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 class UserController extends FOSRestController
 {
     /**
-     * @var \UserBundle\Service\User
+     * @var \AppBundle\Service\User
      */
     private $userService;
 
     /**
      * UserController constructor.
      *
-     * @param \UserBundle\Service\User $userService
+     * @param \AppBundle\Service\User $userService
      */
-    public function __construct(\UserBundle\Service\User $userService)
+    public function __construct(\AppBundle\Service\User $userService)
     {
         $this->userService = $userService;
     }

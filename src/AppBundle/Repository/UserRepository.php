@@ -1,9 +1,9 @@
 <?php
 
-namespace UserBundle\Repository;
+namespace AppBundle\Repository;
 
 use Doctrine\ORM\EntityManager;
-use UserBundle\Entity\User;
+use AppBundle\Entity\User;
 
 /**
  * UserRepository
@@ -12,7 +12,7 @@ use UserBundle\Entity\User;
  */
 class UserRepository
 {
-    private $userEntityClass = 'UserBundle\Entity\User';
+    private $userEntityClass = 'AppBundle\Entity\User';
 
     /**
      * @var EntityManager
