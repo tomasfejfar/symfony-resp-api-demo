@@ -1,8 +1,8 @@
 parameters:
-  user.repository.class: AppBundle\Repository\UserRepository
+  user.repository.class: AppBundle\User\UserRepository
 services:
     user_repository:
-        class: AppBundle\Repository\UserRepository
+        class: AppBundle\User\UserRepository
         arguments:
             - '@doctrine.orm.entity_manager'
 

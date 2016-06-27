@@ -1,9 +1,9 @@
 <?php
 
-namespace AppBundle\Repository;
+namespace AppBundle\User;
 
 use Doctrine\ORM\EntityManager;
-use AppBundle\Entity\User;
+use AppBundle\User\User;
 
 /**
  * UserRepository

@@ -3,7 +3,7 @@
 namespace AppBundle\Service;
 
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use AppBundle\Repository\UserRepository;
+use AppBundle\User\UserRepository;
 
 class User
 {
@@ -24,7 +24,7 @@ class User
 
     /**
      * @param $id
-     * @return \AppBundle\Entity\User
+     * @return \AppBundle\User\User
      */
     public function get($id)
     {
