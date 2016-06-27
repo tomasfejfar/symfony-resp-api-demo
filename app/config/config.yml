@@ -84,7 +84,7 @@ fos_rest:
                 fallback_format: json
                 prefer_extension: false
     view:
-        view_response_listener: force
+        view_response_listener: false
         formats:
             json: true
             xml: false

@@ -55,7 +55,7 @@ class UserController extends FOSRestController
     public function addAction(AddUserRequest $request, ConstraintViolationListInterface $validationErrors)
     {
         if (count($validationErrors)) {
-            return new RequestValidationException($validationErrors);
+            throw new RequestValidationException($validationErrors);
         }
         return $request;
     }

@@ -2,16 +2,22 @@ parameters:
   user.repository.class: AppBundle\User\UserRepository
 services:
     user_repository:
-        class: AppBundle\User\UserRepository
-        arguments:
-            - '@doctrine.orm.entity_manager'
+      class: AppBundle\User\UserRepository
+      arguments:
+        - '@doctrine.orm.entity_manager'
 
     user_service:
-        class: AppBundle\User\UserService
-        arguments:
-            - '@user_repository'
+      class: AppBundle\User\UserService
+      arguments:
+        - '@user_repository'
 
     AppBundle\Controller\UserController:
       class: AppBundle\Controller\UserController
       arguments:
         - '@user_service'
+
+    exception_response_listener:
+      class: AppBundle\Api\Listener\ExceptionResponseListener
+      tags:
+        - { name: kernel.event_listener, event: kernel.exception }
+

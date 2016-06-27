@@ -8,15 +8,23 @@ class RequestValidationException extends \Exception
     /**
      * @var ConstraintViolationListInterface
      */
-    private $validations;
+    private $validationErrors;
 
     /**
      * RequestValidationException constructor.
      *
-     * @param ConstraintViolationListInterface $validations
+     * @param ConstraintViolationListInterface $validationErrors
      */
-    public function __construct(ConstraintViolationListInterface $validations)
+    public function __construct(ConstraintViolationListInterface $validationErrors)
     {
-        $this->validations = $validations;
+        $this->validationErrors = $validationErrors;
+    }
+
+    /**
+     * @return ConstraintViolationListInterface
+     */
+    public function getValidationErrors()
+    {
+        return $this->validationErrors;
     }
 }
