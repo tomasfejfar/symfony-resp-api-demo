@@ -1,9 +1,17 @@
-# Learn more about services, parameters and containers at
-# http://symfony.com/doc/current/book/service_container.html
 parameters:
-#    parameter_name: value
-
+  user.repository.class: AppBundle\User\UserRepository
 services:
-#    service_name:
-#        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    user_repository:
+        class: AppBundle\User\UserRepository
+        arguments:
+            - '@doctrine.orm.entity_manager'
+
+    user_service:
+        class: AppBundle\User\UserService
+        arguments:
+            - '@user_repository'
+
+    AppBundle\Controller\UserController:
+      class: AppBundle\Controller\UserController
+      arguments:
+        - '@user_service'

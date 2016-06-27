@@ -1,11 +1,11 @@
 <?php
 
-namespace AppBundle\Service;
+namespace AppBundle\User;
 
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use AppBundle\User\UserRepository;
 
-class User
+class UserService
 {
     /**
      * @var UserRepository

@@ -7,23 +7,23 @@ use Symfony\Component\Validator\ConstraintViolationListInterface;
 use AppBundle\User\User;
 use FOS\RestBundle\Controller\Annotations\Get;
 use FOS\RestBundle\Controller\Annotations\Post;
-use AppBundle\Exception\RequestValidationException;
-use AppBundle\Request\AddUserRequest;
+use AppBundle\Api\Exception\RequestValidationException;
+use AppBundle\Api\User\Request\AddUserRequest;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 class UserController extends FOSRestController
 {
     /**
-     * @var \AppBundle\Service\User
+     * @var \AppBundle\User\UserService
      */
     private $userService;
 
     /**
      * UserController constructor.
      *
-     * @param \AppBundle\Service\User $userService
+     * @param \AppBundle\User\UserService $userService
      */
-    public function __construct(\AppBundle\Service\User $userService)
+    public function __construct(\AppBundle\User\UserService $userService)
     {
         $this->userService = $userService;
     }

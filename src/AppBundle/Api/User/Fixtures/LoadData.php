@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Fixtures;
+namespace AppBundle\Api\User\Fixtures;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -20,5 +20,6 @@ class LoadData implements FixtureInterface
         $user->setUsername('tomasfejfar');
         $user->setPassword('hardtoguesspassword');
         $manager->persist($user);
+        $manager->flush();
     }
 }
