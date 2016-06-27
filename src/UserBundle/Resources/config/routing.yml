@@ -1,5 +1,5 @@
 api_v1:
-    type: rest
+    type: annotation
     prefix: /v1
     resource: UserBundle\Controller\UserController
     name_prefix: api_v1_
