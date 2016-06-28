@@ -3,6 +3,7 @@
 namespace AppBundle\User;
 
 use AppBundle\Api\User\Request\AddUserRequest;
+use AppBundle\Entity\User;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use AppBundle\User\UserRepository;
 
