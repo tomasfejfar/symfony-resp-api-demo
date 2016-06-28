@@ -4,7 +4,7 @@ namespace AppBundle\Controller;
 
 use FOS\RestBundle\Controller\FOSRestController;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
-use AppBundle\User\User;
+use AppBundle\Entity\User;
 use FOS\RestBundle\Controller\Annotations\Get;
 use FOS\RestBundle\Controller\Annotations\Post;
 use AppBundle\Api\Exception\RequestValidationException;

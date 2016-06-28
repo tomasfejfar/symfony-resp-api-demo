@@ -4,7 +4,7 @@ namespace AppBundle\Api\User\Fixtures;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use AppBundle\User\User;
+use AppBundle\Entity\User;
 
 class LoadData implements FixtureInterface
 {
