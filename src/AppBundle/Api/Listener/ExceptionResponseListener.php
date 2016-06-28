@@ -29,7 +29,7 @@ class ExceptionResponseListener
             $response = [
                 'error' => sprintf('Error %s', get_class($exception)),
                 'message' => $exception->getMessage(),
-                'trace' => $exception->getTraceAsString(),
+                'trace' => $exception->getTrace(),
                 'code' => 500,
             ];
             $event->setResponse(new JsonResponse($response, 500));
