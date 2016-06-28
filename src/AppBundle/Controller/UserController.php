@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use FOS\RestBundle\Controller\FOSRestController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 use AppBundle\Entity\User;
 use FOS\RestBundle\Controller\Annotations\Get;
@@ -35,7 +36,7 @@ class UserController extends FOSRestController
      */
     public function getUserAction($userId)
     {
-        return $this->userService->get($userId);
+        return new JsonResponse($this->userService->get($userId), 200);
     }
 
     /**
@@ -44,7 +45,7 @@ class UserController extends FOSRestController
      */
     public function getUsersAction()
     {
-        return $this->userService->list();
+        return new JsonResponse($this->userService->list(), 200);
     }
 
     /**
@@ -57,6 +58,7 @@ class UserController extends FOSRestController
         if (count($validationErrors)) {
             throw new RequestValidationException($validationErrors);
         }
-        return $request;
+        $newUser = $this->userService->add($request);
+        return new JsonResponse($newUser, 201);
     }
 }

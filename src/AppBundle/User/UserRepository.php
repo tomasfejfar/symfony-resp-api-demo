@@ -3,7 +3,7 @@
 namespace AppBundle\User;
 
 use Doctrine\ORM\EntityManager;
-use AppBundle\User\User;
+use AppBundle\Entity\User;
 
 /**
  * UserRepository
@@ -42,5 +42,12 @@ class UserRepository
             ->from($this->userEntityClass, 'u')
             ->orderBy('u.username', 'ASC')->getQuery();
         return $query->getResult();
+    }
+
+    public function create(User $user)
+    {
+        $this->entityManager->persist($user);
+        $this->entityManager->flush();
+        return $user->getId();
     }
 }

@@ -2,6 +2,7 @@
 
 namespace AppBundle\User;
 
+use AppBundle\Api\User\Request\AddUserRequest;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use AppBundle\User\UserRepository;
 
@@ -24,7 +25,7 @@ class UserService
 
     /**
      * @param $id
-     * @return \AppBundle\User\User
+     * @return \AppBundle\Entity\User
      */
     public function get($id)
     {
@@ -38,5 +39,14 @@ class UserService
     {
         $all = $this->repository->findAll();
         return $all;
+    }
+
+    public function add(AddUserRequest $request)
+    {
+        $user = new User();
+        $user->setUsername($request->name);
+        $user->setPassword($request->password);
+        $newUserId = $this->repository->create($user);
+        return $this->get($newUserId);
     }
 }
