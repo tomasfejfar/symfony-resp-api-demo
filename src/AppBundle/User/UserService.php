@@ -47,7 +47,12 @@ class UserService
         $user = new User();
         $user->setUsername($request->name);
         $user->setPassword($request->password);
-        $newUserId = $this->repository->create($user);
-        return $this->get($newUserId);
+        $this->repository->create($user);
+    }
+
+    public function remove($id)
+    {
+        $user = $this->repository->find($id);
+        $this->repository->remove($user);
     }
 }

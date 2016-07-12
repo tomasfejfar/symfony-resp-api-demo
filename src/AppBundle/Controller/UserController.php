@@ -2,12 +2,15 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Api\Response\UserResponseFactory;
+use AppBundle\User\UserService;
 use FOS\RestBundle\Controller\FOSRestController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 use AppBundle\Entity\User;
 use FOS\RestBundle\Controller\Annotations\Get;
 use FOS\RestBundle\Controller\Annotations\Post;
+use FOS\RestBundle\Controller\Annotations\Delete;
 use AppBundle\Api\Exception\RequestValidationException;
 use AppBundle\Api\User\Request\AddUserRequest;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -15,18 +18,25 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 class UserController extends FOSRestController
 {
     /**
-     * @var \AppBundle\User\UserService
+     * @var UserService
      */
     private $userService;
 
     /**
+     * @var UserResponseFactory
+     */
+    private $userResponseFactory;
+
+    /**
      * UserController constructor.
      *
-     * @param \AppBundle\User\UserService $userService
+     * @param UserService $userService
+     * @param UserResponseFactory $userResponseFactory
      */
-    public function __construct(\AppBundle\User\UserService $userService)
+    public function __construct(UserService $userService, UserResponseFactory $userResponseFactory)
     {
         $this->userService = $userService;
+        $this->userResponseFactory = $userResponseFactory;
     }
 
     /**
@@ -45,7 +55,9 @@ class UserController extends FOSRestController
      */
     public function getUsersAction()
     {
-        return new JsonResponse($this->userService->list(), 200);
+        return new JsonResponse(array_map(function (User $user) {
+            $this->userResponseFactory->getResponseFor($user);
+        }, $this->userService->list()), 200);
     }
 
     /**
@@ -58,7 +70,16 @@ class UserController extends FOSRestController
         if (count($validationErrors)) {
             throw new RequestValidationException($validationErrors);
         }
-        $newUser = $this->userService->add($request);
-        return new JsonResponse($newUser, 201);
+        $this->userService->add($request);
+        return new JsonResponse(null, 204);
+    }
+
+    /**
+     * @Delete("users/{id}")
+     */
+    public function removeAction($id)
+    {
+        $this->userService->remove($id);
+        return new JsonResponse(null, 204);
     }
 }

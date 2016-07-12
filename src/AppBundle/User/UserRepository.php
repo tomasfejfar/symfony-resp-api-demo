@@ -48,6 +48,11 @@ class UserRepository
     {
         $this->entityManager->persist($user);
         $this->entityManager->flush();
-        return $user->getId();
+    }
+
+    public function remove($user)
+    {
+        $this->entityManager->remove($user);
+        $this->entityManager->flush();
     }
 }

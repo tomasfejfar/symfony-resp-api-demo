@@ -11,10 +11,14 @@ services:
       arguments:
         - '@user_repository'
 
+    user_response_factory:
+      class: AppBundle\Api\Response\UserResponseFactory
+
     AppBundle\Controller\UserController:
       class: AppBundle\Controller\UserController
       arguments:
         - '@user_service'
+        - '@user_response_factory'
 
     exception_response_listener:
       class: AppBundle\Api\Listener\ExceptionResponseListener
