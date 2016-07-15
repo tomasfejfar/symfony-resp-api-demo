@@ -1,5 +1,5 @@
 <?php
-namespace AppBundle\Api\Response;
+namespace AppBundle\Api\User\Response;
 
 use AppBundle\Entity\User;
 

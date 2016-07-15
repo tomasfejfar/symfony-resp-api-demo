@@ -2,7 +2,7 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Api\Response\UserResponseFactory;
+use AppBundle\Api\User\Response\UserResponseFactory;
 use AppBundle\User\UserService;
 use FOS\RestBundle\Controller\FOSRestController;
 use Symfony\Component\HttpFoundation\JsonResponse;
