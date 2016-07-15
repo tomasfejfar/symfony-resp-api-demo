@@ -12,7 +12,7 @@ use FOS\RestBundle\Controller\Annotations\Get;
 use FOS\RestBundle\Controller\Annotations\Post;
 use FOS\RestBundle\Controller\Annotations\Delete;
 use AppBundle\Api\Exception\RequestValidationException;
-use AppBundle\Api\User\Request\AddUserRequest;
+use AppBundle\Api\User\Request\UserRequest;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 class UserController extends FOSRestController
@@ -63,9 +63,9 @@ class UserController extends FOSRestController
     /**
      * @Post("users")
      * @ParamConverter("request", converter="fos_rest.request_body")
-     * @param AddUserRequest $request
+     * @param UserRequest $request
      */
-    public function addAction(AddUserRequest $request, ConstraintViolationListInterface $validationErrors)
+    public function addAction(UserRequest $request, ConstraintViolationListInterface $validationErrors)
     {
         if (count($validationErrors)) {
             throw new RequestValidationException($validationErrors);

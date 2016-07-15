@@ -4,7 +4,7 @@ namespace AppBundle\Api\User\Request;
 use JMS\Serializer\Annotation as JMS;
 use Symfony\Component\Validator\Constraints as Assert;
 
-class AddUserRequest
+class UserRequest
 {
     /**
      * @Assert\Type("string")
