@@ -12,7 +12,7 @@ services:
         - '@user_repository'
 
     user_response_factory:
-      class: AppBundle\Api\Response\UserResponseFactory
+      class: AppBundle\Api\User\Response\UserResponseFactory
 
     AppBundle\Controller\UserController:
       class: AppBundle\Controller\UserController
