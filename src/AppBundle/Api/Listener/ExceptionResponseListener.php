@@ -2,6 +2,8 @@
 namespace AppBundle\Api\Listener;
 
 use AppBundle\Api\Exception\RequestValidationException;
+use Doctrine\DBAL\Driver\PDOException;
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 
@@ -23,6 +25,17 @@ class ExceptionResponseListener
             }
             $event->setResponse(new JsonResponse([
                 'errors' => $validationErrors,
+                'code' => 400,
+            ], 400));
+        } elseif ($exception instanceof UniqueConstraintViolationException) {
+            /** @var $previous PDOException */
+            $previous = $exception->getPrevious();
+            $event->setResponse(new JsonResponse([
+                'errors' => [
+                    [
+                        "message" => $previous->errorInfo[2]
+                    ]
+                ],
                 'code' => 400,
             ], 400));
         } else {
