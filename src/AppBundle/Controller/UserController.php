@@ -49,7 +49,7 @@ class UserController extends FOSRestController
      *     200 = "Returned when successful",
      *   }
      * )
-     * @Get("users/{id}")
+     * @Get("users/{id}", requirements={"id" = "\d+"})
      * @param $id
      * @return User
      */
@@ -80,6 +80,7 @@ class UserController extends FOSRestController
      * @ApiDoc(
      *   resource = true,
      *   description = "Creates a new user",
+     *   input = "\AppBundle\Api\User\Request\UserRequest",
      *   statusCodes = {
      *     204 = "Returned when successful",
      *     400 = "Returned when validation fails"
@@ -106,7 +107,7 @@ class UserController extends FOSRestController
      *     200 = "Returned when successful",
      *   }
      * )
-     * @Delete("users/{id}")
+     * @Delete("users/{id}", requirements={"id" = "\d+"})
      */
     public function removeAction($id)
     {
@@ -118,11 +119,21 @@ class UserController extends FOSRestController
      * @ApiDoc(
      *   resource = true,
      *   description = "Updates user",
+     *   input = "\AppBundle\Api\User\Request\UserRequest",
      *   statusCodes = {
      *     200 = "Returned when successful",
+     *   },
+     *   requirements={
+     *      {
+     *       "name"="id",
+     *      "requirement"="\d+",
+     *      "dataType"="integer",
+     *      "required"=true,
+     *      "description"="ID of user to be updated"
+     *     }
      *   }
      * )
-     * @Put("users/{id}")
+     * @Put("users/{id}", requirements={"id" = "\d+"})
      */
     public function updateAction($id, UserRequest $request, ConstraintViolationListInterface $validationErrors)
     {
