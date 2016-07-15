@@ -57,7 +57,7 @@ class UserController extends FOSRestController
     public function getUsersAction()
     {
         return new JsonResponse(array_map(function (User $user) {
-            $this->userResponseFactory->getResponseFor($user);
+            return $this->userResponseFactory->getResponseFor($user);
         }, $this->userService->list()), 200);
     }
 
