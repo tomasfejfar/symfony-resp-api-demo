@@ -47,6 +47,7 @@ class UserController extends FOSRestController
      *   description = "Gets a user",
      *   statusCodes = {
      *     200 = "Returned when successful",
+     *     404 = "When user does not exist",
      *   }
      * )
      * @Get("users/{id}", requirements={"id" = "\d+"})
@@ -105,6 +106,7 @@ class UserController extends FOSRestController
      *   description = "Removes user",
      *   statusCodes = {
      *     200 = "Returned when successful",
+     *     404 = "When user does not exist",
      *   },
      *     requirements={
      *      {
@@ -131,6 +133,7 @@ class UserController extends FOSRestController
      *   input = "\AppBundle\Api\User\Request\UserRequest",
      *   statusCodes = {
      *     204 = "Returned when successful",
+     *     404 = "When user does not exist",
      *   },
      *   requirements={
      *      {

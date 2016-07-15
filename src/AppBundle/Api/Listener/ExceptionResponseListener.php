@@ -6,6 +6,7 @@ use Doctrine\DBAL\Driver\PDOException;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ExceptionResponseListener
 {
@@ -38,6 +39,15 @@ class ExceptionResponseListener
                 ],
                 'code' => 400,
             ], 400));
+        } elseif ($exception instanceof NotFoundHttpException) {
+            $event->setResponse(new JsonResponse([
+                'errors' => [
+                    [
+                        "message" => 'Not found'
+                    ]
+                ],
+                'code' => 404,
+            ], 404));
         } else {
             $response = [
                 'error' => sprintf('Error %s', get_class($exception)),
