@@ -82,4 +82,15 @@ class UserController extends FOSRestController
         $this->userService->remove($id);
         return new JsonResponse(null, 204);
     }
+
+    /**
+     * @Put("users/{id}")
+     */
+    public function updateAction($id, UserRequest $request, ConstraintViolationListInterface $validationErrors)
+    {
+        if (count($validationErrors)) {
+            throw new RequestValidationException($validationErrors);
+        }
+        $this->userService->set($request);
+    }
 }
