@@ -105,6 +105,15 @@ class UserController extends FOSRestController
      *   description = "Removes user",
      *   statusCodes = {
      *     200 = "Returned when successful",
+     *   },
+     *     requirements={
+     *      {
+     *       "name"="id",
+     *      "requirement"="\d+",
+     *      "dataType"="integer",
+     *      "required"=true,
+     *      "description"="ID of user to be updated"
+     *     }
      *   }
      * )
      * @Delete("users/{id}", requirements={"id" = "\d+"})
@@ -121,7 +130,7 @@ class UserController extends FOSRestController
      *   description = "Updates user",
      *   input = "\AppBundle\Api\User\Request\UserRequest",
      *   statusCodes = {
-     *     200 = "Returned when successful",
+     *     204 = "Returned when successful",
      *   },
      *   requirements={
      *      {
