@@ -90,3 +90,19 @@ fos_rest:
             xml: false
         templating_formats:
             html: false
+nelmio_api_doc:
+  request_listener:
+    enabled: false
+  sandbox:
+    accept_type: ~
+    body_format:
+      default_format: json
+      formats:
+        - json
+    enabled: true
+    endpoint: ~
+    request_format:
+      default_format: json
+      formats:
+        json: application/json
+      method: accept_header
