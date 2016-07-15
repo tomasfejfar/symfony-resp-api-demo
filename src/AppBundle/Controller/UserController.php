@@ -41,13 +41,13 @@ class UserController extends FOSRestController
     }
 
     /**
-     * @Get("users/{userId}")
-     * @param $userId
+     * @Get("users/{id}")
+     * @param $id
      * @return User
      */
-    public function getUserAction($userId)
+    public function getUserAction($id)
     {
-        return new JsonResponse($this->userService->get($userId), 200);
+        return new JsonResponse($this->userService->get($id), 200);
     }
 
     /**
