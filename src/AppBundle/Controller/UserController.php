@@ -10,6 +10,7 @@ use Symfony\Component\Validator\ConstraintViolationListInterface;
 use AppBundle\Entity\User;
 use FOS\RestBundle\Controller\Annotations\Get;
 use FOS\RestBundle\Controller\Annotations\Post;
+use FOS\RestBundle\Controller\Annotations\Put;
 use FOS\RestBundle\Controller\Annotations\Delete;
 use AppBundle\Api\Exception\RequestValidationException;
 use AppBundle\Api\User\Request\UserRequest;
