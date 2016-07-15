@@ -150,5 +150,6 @@ class UserController extends FOSRestController
             throw new RequestValidationException($validationErrors);
         }
         $this->userService->set($id, $request);
+        return new JsonResponse(null, 204);
     }
 }
