@@ -55,4 +55,9 @@ class UserService
         $user = $this->repository->find($id);
         $this->repository->remove($user);
     }
+
+    public function set($id, UserRequest $request)
+    {
+        $this->repository->set($id, $request);
+    }
 }

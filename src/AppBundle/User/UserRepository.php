@@ -55,4 +55,13 @@ class UserRepository
         $this->entityManager->remove($user);
         $this->entityManager->flush();
     }
+
+    public function set($id, $request)
+    {
+        $user = $this->find($id);
+        $user->setUsername($request->name);
+        $user->setPassword($request->password);
+        $this->entityManager->persist($user);
+        $this->entityManager->flush();
+    }
 }

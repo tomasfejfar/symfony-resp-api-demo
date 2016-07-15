@@ -140,6 +140,6 @@ class UserController extends FOSRestController
         if (count($validationErrors)) {
             throw new RequestValidationException($validationErrors);
         }
-        $this->userService->set($request);
+        $this->userService->set($id, $request);
     }
 }
