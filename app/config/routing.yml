@@ -2,3 +2,7 @@ api_v1_user:
     type: annotation
     prefix: /api/v1
     resource: AppBundle\Controller\UserController
+
+NelmioApiDocBundle:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix:   /api/doc

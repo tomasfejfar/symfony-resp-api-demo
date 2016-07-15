@@ -15,6 +15,7 @@ use FOS\RestBundle\Controller\Annotations\Delete;
 use AppBundle\Api\Exception\RequestValidationException;
 use AppBundle\Api\User\Request\UserRequest;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 
 class UserController extends FOSRestController
 {
@@ -41,6 +42,13 @@ class UserController extends FOSRestController
     }
 
     /**
+     * @ApiDoc(
+     *   resource = true,
+     *   description = "Gets a user",
+     *   statusCodes = {
+     *     200 = "Returned when successful",
+     *   }
+     * )
      * @Get("users/{id}")
      * @param $id
      * @return User
@@ -51,6 +59,13 @@ class UserController extends FOSRestController
     }
 
     /**
+     * @ApiDoc(
+     *   resource = true,
+     *   description = "Lists users",
+     *   statusCodes = {
+     *     200 = "Returned when successful",
+     *   }
+     * )
      * @Get("users")
      * @return array
      */
@@ -62,6 +77,14 @@ class UserController extends FOSRestController
     }
 
     /**
+     * @ApiDoc(
+     *   resource = true,
+     *   description = "Creates a new user",
+     *   statusCodes = {
+     *     204 = "Returned when successful",
+     *     400 = "Returned when validation fails"
+     *   }
+     * )
      * @Post("users")
      * @ParamConverter("request", converter="fos_rest.request_body")
      * @param UserRequest $request
@@ -76,6 +99,13 @@ class UserController extends FOSRestController
     }
 
     /**
+     * @ApiDoc(
+     *   resource = true,
+     *   description = "Removes user",
+     *   statusCodes = {
+     *     200 = "Returned when successful",
+     *   }
+     * )
      * @Delete("users/{id}")
      */
     public function removeAction($id)
@@ -85,6 +115,13 @@ class UserController extends FOSRestController
     }
 
     /**
+     * @ApiDoc(
+     *   resource = true,
+     *   description = "Updates user",
+     *   statusCodes = {
+     *     200 = "Returned when successful",
+     *   }
+     * )
      * @Put("users/{id}")
      */
     public function updateAction($id, UserRequest $request, ConstraintViolationListInterface $validationErrors)
