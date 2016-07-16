@@ -52,7 +52,6 @@ class UserController extends FOSRestController
      * )
      * @Get("users/{id}", requirements={"id" = "\d+"})
      * @param $id
-     * @return User
      */
     public function getUserAction($id)
     {
@@ -68,7 +67,6 @@ class UserController extends FOSRestController
      *   }
      * )
      * @Get("users")
-     * @return array
      */
     public function getUsersAction()
     {
